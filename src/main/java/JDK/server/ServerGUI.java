@@ -9,8 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ServerGUI extends JFrame implements ServerView {
-    public static final int WIDTH = 400;
-    public static final int HEIGHT = 300;
+    private static Toolkit toolkit = Toolkit.getDefaultToolkit();
+    private static Dimension screenSize = toolkit.getScreenSize();
+    private static final int WINDOW_HEIGHT = 400;
+    private static final int WINDOW_WIDTH = 500;
+    private static final int POS_X = (int) (screenSize.getWidth() / 2 - (WINDOW_WIDTH / 2)) + WINDOW_HEIGHT;
+    private static final int POS_Y = (int) (screenSize.getHeight() / 2 - (WINDOW_HEIGHT / 2));
 
     JButton btnStart, btnStop;
     JTextArea log;
@@ -26,11 +30,8 @@ public class ServerGUI extends JFrame implements ServerView {
 
     private void setting() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(WIDTH, HEIGHT);
-        setResizable(false);
-        setTitle("Chat server");
-        setLocationRelativeTo(null);
-
+        setBounds(POS_X, POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
+        setTitle("Server");
     }
 
     public ServerController getConnection(){

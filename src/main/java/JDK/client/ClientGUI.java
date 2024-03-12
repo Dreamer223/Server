@@ -40,8 +40,7 @@ public class ClientGUI extends JFrame implements ClientView {
 
     private void setting() {
         setBounds(POS_X, POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
-        setResizable(false);
-        setTitle("Chat client");
+        setTitle("Chat");
         setDefaultCloseOperation(HIDE_ON_CLOSE);
     }
 
@@ -59,7 +58,7 @@ public class ClientGUI extends JFrame implements ClientView {
 
 
     public void disconnectFromServer(){
-        clientController.disconnectedFromServer();
+        clientController.disconnectFromServer();
         disconnectedFromServer();
     }
 
@@ -93,9 +92,31 @@ public class ClientGUI extends JFrame implements ClientView {
         headerPanel = new JPanel(new GridLayout(2, 3));
         tfIPAddress = new JTextField("127.0.0.1");
         tfPort = new JTextField("8189");
-        tfLogin = new JTextField("Ivan Ivanovich");
-        password = new JPasswordField("123456");
+        tfLogin = new JTextField("Name");
+        password = new JPasswordField("password");
         btnLogin = new JButton("login");
+
+        tfLogin.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                tfLogin.setText("");
+            }
+            @Override
+            public void focusLost(FocusEvent e) {
+                tfLogin.setText("Name");
+            }
+        });
+        password.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                password.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                password.setText("password");
+            }
+        });
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -154,6 +175,7 @@ public class ClientGUI extends JFrame implements ClientView {
         btnDisconnect.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(clientController != null)
                 disconnectFromServer();
             }
         });

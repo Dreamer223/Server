@@ -43,11 +43,8 @@ public class ClientController {
             connected = false;
             clientView.disconnectFromServer();
             showOnWindow("Вы были отключены от сервера!");
+            server.disconnectUser(this);
         }
-    }
-    public void disconnectedFromServer() {
-        disconnectFromServer();
-        server.disconnectUser(this);
     }
 
     public void message(String text) throws IOException {

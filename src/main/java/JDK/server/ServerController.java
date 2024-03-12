@@ -37,6 +37,7 @@ public class ServerController {
             work = false;
             for (ClientController client: clientList){
                 disconnectUser(client);
+                client.disconnectFromServer();
             }
             showOnWindow("Сервер остановлен!");
         }
