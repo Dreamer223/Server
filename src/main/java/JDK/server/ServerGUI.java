@@ -13,7 +13,7 @@ public class ServerGUI extends JFrame implements ServerView {
     private static Dimension screenSize = toolkit.getScreenSize();
     private static final int WINDOW_HEIGHT = 400;
     private static final int WINDOW_WIDTH = 500;
-    private static final int POS_X = (int) (screenSize.getWidth() / 2 - (WINDOW_WIDTH / 2)) + WINDOW_HEIGHT;
+    private static final int POS_X = (int) (screenSize.getWidth() / 2 - (WINDOW_WIDTH / 2));
     private static final int POS_Y = (int) (screenSize.getHeight() / 2 - (WINDOW_HEIGHT / 2));
 
     JButton btnStart, btnStop;
